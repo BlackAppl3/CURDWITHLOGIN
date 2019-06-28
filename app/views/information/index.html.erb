@@ -1,0 +1,36 @@
+<p> THIS DISPLAY USER'S INFORMATION </p>
+
+<table>
+
+    <% @info.each do |val| %>
+          <tr>
+              <td> <%= val.name %> </td>
+              <td> <%= val.age %> </td>
+              <td> <%= link_to('SHOW PROFILE', {
+                  "controller": "information",
+                  "action": "show",
+                  "id":val.id
+              }) %> </td>
+              <td> <%= link_to('DELETE PROFILE', {
+                  "controller": "information",
+                  "action": "delete",
+                  "id":val.id,
+                   data:{ confirm: 'Are you sure?' }
+               }) %> </td>
+               <td>
+               <%= link_to('EDIT PROFILE', {
+                  "controller": "information",
+                  "action": "edit",
+                  "id":val.id
+               }) %>
+               </td>
+          </tr>    
+    <% end %>
+
+</table>
+
+<%= link_to('ADD INFORMATION', {
+    "controller" => "information",
+    "action" => "new"
+}) 
+%> | <%= link_to('LOG OUT', '/log_out' ) %>
